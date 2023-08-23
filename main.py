@@ -10,13 +10,34 @@ def input_splitter(expression):
     return tokens
 
 
+def calculator(tokens):
+    stack = []
+    for _ in tokens:
+        if _.isnumeric():
+            stack.append(_)
+        else:
+            if _ == "+":
+                add(stack)
+    print(stack)
+    return stack
+
+
+def add(stack):
+    x = int(stack.pop())
+    y = int(stack.pop())
+    result = x + y
+    stack.append(result)
+    print(result)
+
+
 def main():
     while True:
         user_expression = user_input()
         if user_expression == "exit":
             break
         else:
-            input_splitter(user_expression)
+            tokens = input_splitter(user_expression)
+            calculator(tokens)
 
 
 # This is the standard boilerplate that calls the main() function.
