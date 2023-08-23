@@ -1,21 +1,14 @@
-import sys
-
-
-def close_program():
-    sys.exit()
-
-
 def user_input():
     expression = input("Enter your expression: ").lower()
     print(expression)
-    if expression == "exit":
-        close_program()
     return expression
 
 
 def main():
     while True:
-        user_input()
+        exit_check = user_input()
+        if exit_check == "exit":
+            break
 
 
 # This is the standard boilerplate that calls the main() function.
