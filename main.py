@@ -15,9 +15,8 @@ def calculator(tokens):
     for _ in tokens:
         if _.isnumeric():
             stack.append(_)
-        else:
-            if _ == "+":
-                add(stack)
+        elif _ == "+":
+            add(stack)
     print(stack)
     return stack
 
