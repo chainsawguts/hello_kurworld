@@ -4,11 +4,19 @@ def user_input():
     return expression
 
 
+def input_splitter(expression):
+    tokens = expression.split()
+    print(tokens)
+    return tokens
+
+
 def main():
     while True:
-        exit_check = user_input()
-        if exit_check == "exit":
+        user_expression = user_input()
+        if user_expression == "exit":
             break
+        else:
+            input_splitter(user_expression)
 
 
 # This is the standard boilerplate that calls the main() function.
