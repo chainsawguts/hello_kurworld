@@ -12,19 +12,19 @@ def input_splitter(expression):
 
 def calculator(tokens):
     stack = []
-    for _ in tokens:
-        if _.isnumeric():
-            stack.append(_)
-        elif _ == "+":
+    for token in tokens:
+        if token.isnumeric():
+            stack.append(int(token))
+        elif token == "+":
             add(stack)
     print(stack)
     return stack
 
 
 def add(stack):
-    x = int(stack.pop())
-    y = int(stack.pop())
-    result = x + y
+    x = stack.pop()
+    y = stack.pop()
+    result = y + x
     stack.append(result)
     print(result)
 
