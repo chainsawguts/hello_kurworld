@@ -17,6 +17,12 @@ def calculator(tokens):
             stack.append(int(token))
         elif token == "+":
             add(stack)
+        elif token == "-":
+            subtract(stack)
+        elif token == "*":
+            multiply(stack)
+        elif token == "/":
+            divide(stack)
     print(stack)
     return stack
 
@@ -25,6 +31,30 @@ def add(stack):
     x = stack.pop()
     y = stack.pop()
     result = y + x
+    stack.append(result)
+    print(result)
+
+
+def subtract(stack):
+    x = stack.pop()
+    y = stack.pop()
+    result = y - x
+    stack.append(result)
+    print(result)
+
+
+def multiply(stack):
+    x = stack.pop()
+    y = stack.pop()
+    result = y * x
+    stack.append(result)
+    print(result)
+
+
+def divide(stack):
+    x = stack.pop()
+    y = stack.pop()
+    result = y / x
     stack.append(result)
     print(result)
 
