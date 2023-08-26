@@ -1,12 +1,10 @@
 def user_input():
     expression = input("Enter your expression: ").lower()
-    print(expression)
     return expression
 
 
 def input_splitter(expression):
     tokens = expression.split()
-    print(tokens)
     return tokens
 
 
@@ -23,40 +21,35 @@ def calculator(tokens):
             multiply(stack)
         elif token == "/":
             divide(stack)
-    print(stack)
     return stack
 
 
 def add(stack):
-    x = stack.pop()
     y = stack.pop()
-    result = y + x
+    x = stack.pop()
+    result = x + y
     stack.append(result)
-    print(result)
 
 
 def subtract(stack):
-    x = stack.pop()
     y = stack.pop()
-    result = y - x
+    x = stack.pop()
+    result = x - y
     stack.append(result)
-    print(result)
 
 
 def multiply(stack):
-    x = stack.pop()
     y = stack.pop()
-    result = y * x
+    x = stack.pop()
+    result = x * y
     stack.append(result)
-    print(result)
 
 
 def divide(stack):
-    x = stack.pop()
     y = stack.pop()
-    result = y / x
+    x = stack.pop()
+    result = x / y
     stack.append(result)
-    print(result)
 
 
 def main():
@@ -66,7 +59,8 @@ def main():
             break
         else:
             tokens = input_splitter(user_expression)
-            calculator(tokens)
+            result = calculator(tokens)
+            print(*result)
 
 
 # This is the standard boilerplate that calls the main() function.
