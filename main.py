@@ -1,5 +1,5 @@
 def user_input():
-    expression = input("Enter your expression: ").lower()
+    expression = input("Enter your expression: ").lower().strip()
     return expression
 
 
@@ -9,19 +9,26 @@ def input_splitter(expression):
 
 
 def calculator(tokens):
-    stack = []
-    for token in tokens:
-        if token.isnumeric():
-            stack.append(int(token))
-        elif token == "+":
-            add(stack)
-        elif token == "-":
-            subtract(stack)
-        elif token == "*":
-            multiply(stack)
-        elif token == "/":
-            divide(stack)
-    return stack
+    try:
+        stack = []
+        for token in tokens:
+            if token.isnumeric():
+                stack.append(int(token))
+            elif token[0] == "-" and token[1:].isdigit():
+                stack.append(int(token))
+            elif token == "+":
+                add(stack)
+            elif token == "-":
+                subtract(stack)
+            elif token == "*":
+                multiply(stack)
+            elif token == "/":
+                divide(stack)
+        return stack
+    except IndexError:
+        print("Enter at least two numbers.")
+    except ZeroDivisionError:
+        print("Cannot divide by 0.")
 
 
 def add(stack):
@@ -60,7 +67,10 @@ def main():
         else:
             tokens = input_splitter(user_expression)
             result = calculator(tokens)
-            print(*result)
+            if result == None:
+                print("Try again!")
+            else:
+                print(*result)
 
 
 # This is the standard boilerplate that calls the main() function.
