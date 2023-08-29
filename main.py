@@ -11,19 +11,12 @@ def input_splitter(expression):
 def calculator(tokens):
     try:
         stack = []
+        operators = {"+": add, "-": subtract, "*": multiply, "/": divide}
         for token in tokens:
-            if token.isnumeric():
+            if token.isnumeric() or (token[0] == "-" and token[1:].isdigit()):
                 stack.append(int(token))
-            elif token[0] == "-" and token[1:].isdigit():
-                stack.append(int(token))
-            elif token == "+":
-                add(stack)
-            elif token == "-":
-                subtract(stack)
-            elif token == "*":
-                multiply(stack)
-            elif token == "/":
-                divide(stack)
+            elif token in operators:
+                operators[token](stack)
         return stack
     except IndexError:
         print("Enter at least two numbers.")
