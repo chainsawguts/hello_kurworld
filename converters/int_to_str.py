@@ -2,20 +2,19 @@ def int_to_str(integer):
     num_string = ""
     
     if integer == 0:
-        return 0
+        return "0"
     
-    is_negative = False
-    if integer < 0:
-        is_negative = True
+    is_negative = integer < 0
+    if is_negative:
         integer = -integer
 
     while integer > 0:
-        digit = (integer % 10) + 48
+        digit = (integer % 10)
         integer = integer // 10
-        character = chr(digit)
+        character = chr(digit + 48)
         num_string =  character + num_string
 
-    if is_negative == True:
+    if is_negative:
         num_string = "-" + num_string
     return num_string
 
