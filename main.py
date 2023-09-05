@@ -1,3 +1,20 @@
+import sys
+
+
+def repl_standby():
+    while True:
+        user_expression = user_input()
+        if user_expression == "exit":
+            break
+        else:
+            tokens = input_splitter(user_expression)
+            result = calculator(tokens)
+            if result == None:
+                print("Try again!")
+            else:
+                print(*result)
+
+
 def user_input():
     expression = input("Enter your expression: ").lower().strip()
     return expression
@@ -53,17 +70,14 @@ def divide(stack):
 
 
 def main():
-    while True:
-        user_expression = user_input()
-        if user_expression == "exit":
-            break
+    if len(sys.argv) > 1:
+        result = calculator(sys.argv)
+        if result == None:
+            print("Try again!")
         else:
-            tokens = input_splitter(user_expression)
-            result = calculator(tokens)
-            if result == None:
-                print("Try again!")
-            else:
-                print(*result)
+            print(*result)
+    else:
+        repl_standby()
 
 
 # This is the standard boilerplate that calls the main() function.
